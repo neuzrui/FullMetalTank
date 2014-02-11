@@ -1,21 +1,23 @@
-__author__ = 'Ray'
+__author__ = 'Rui Zhang'
 
 
 class Board(object):
 
+    # basic attributes of the board.
     emptyCell = ' '
     row = 3
     column = 3
 
-    # To initialize a 3X3 board for the tic tac toe game. We use a two-dimension array to store the
+    # Initialize a 3X3 board for the tic tac toe game. We use a two-dimension array to store the
     # marks for player/AI.
     def __init__(self,):
         self.boardGrid = [[self.emptyCell] * self.column for i in range(self.row)]
 
-    # Player/AI use 'O' or 'X', to mark the cells. If other value passed in, raise an exception
-    # If the index exceed the boundary, raise exception as well
+    # Player/AI use his mark to mark the cells. If other value passed in, raise an MarkError
+    # If the index exceed the boundary, raise MarkError as well
     def placeMark(self, mark, rowNum, columnNum):
         try:
+            # only if the cell is empty and given mark is a valid mark
             if self.cellIsEmpty(rowNum, columnNum) and mark in ["X", "O"]:
                 self.boardGrid[rowNum - 1][columnNum - 1] = mark
             else:
@@ -23,11 +25,11 @@ class Board(object):
         except IndexError:
             raise IndexError("Error: Position out of boundary")
 
-    # Clear any mark in the cell, which is specified as a cellPosition (rowNum, columnNum)
+    # Clear mark in the cell, whose position is specified by a tuple (rowNum, columnNum), numbers are shown in console
     def clearMove(self, cellPosition):
         self.boardGrid[cellPosition[0] - 1][cellPosition[1] - 1] = self.emptyCell
 
-    # Check if the specific cell is empty or not.
+    # Check if the specific cell is empty.
     # Return True if the cell is empty, otherwise, return False
     def cellIsEmpty(self, rowNum, columnNum):
         if self.boardGrid[rowNum - 1][columnNum - 1] == self.emptyCell:
@@ -35,7 +37,7 @@ class Board(object):
         return False
 
     # Return a list of available moves that a player/AI could place their mark
-    # Position is represented by a tuple (rowNum, columnNum)
+    # Position is specified by a tuple (rowNum, columnNum)
     def availableMoves(self):
         return [(i + 1, j + 1) for i in range(self.row) for j in range(self.column) if self.cellIsEmpty(i + 1, j + 1)]
 
@@ -88,7 +90,7 @@ class Board(object):
             print "%s | " * self.column % tuple(self.boardGrid[i][j] for j in range(self.column))
         print "----" * (self.column + 1)
 
-# supporting class for exceptions that may be thrown in method placeMark() of class Board
+# Supporting class for exceptions that may be thrown in method placeMark() of class Board
 class MarkError(Exception):
     def __init__(self, message):
         self.message = message
