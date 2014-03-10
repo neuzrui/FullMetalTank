@@ -119,6 +119,7 @@ class WumpusWorld(object):
             raise confError
 
 
+    # place symbol at specific position
     def placeSymbol(self, position, symbol):
         posX = position[0]
         posY = position[1]
@@ -129,6 +130,7 @@ class WumpusWorld(object):
             self.world[posX-1][posY-1] = self.world[posX-1][posY-1] + "/" + symbol
 
 
+    # extract position information from configuration string
     @staticmethod
     def extractPosition(confStr, confSymbol):
         line = confStr.strip().replace(confSymbol,"")

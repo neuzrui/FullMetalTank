@@ -1,7 +1,6 @@
-import shlex
-
 __author__ = 'Rui Zhang'
 
+import shlex
 from string import Template
 import subprocess
 
@@ -9,6 +8,7 @@ class TheoremProver(object):
 
     p9_input_template_path = "./p9_input_template.txt"
 
+    # init the prover
     def __init__(self, row, col, path = "./prover9"):
         self.row = row
         self.col = col
@@ -18,6 +18,7 @@ class TheoremProver(object):
         self.theorem = ""
         self.tempInput = self.getTempInput()
 
+    # generate NearbyX and NearbyY logic
     def generateNearbyFacts(self):
         facts = ""
         facts += "all X (NearbyX(1,X) <-> X=2).\n"
@@ -31,13 +32,14 @@ class TheoremProver(object):
         facts += "all Y (NearbyY(%d,Y) <-> Y=%d).\n" % (self.row, self.row - 1)
         return facts
 
+    # get p9 input file template
     def getTempInput(self):
         templateFile = file(self.p9_input_template_path)
         templateStr = templateFile.read()
         templateFile.close()
         return Template(templateStr)
 
-
+    # substitute the variables in the template
     def generateP9Input(self):
         try:
             inputStr = self.tempInput.substitute(
@@ -52,18 +54,11 @@ class TheoremProver(object):
         except IOError:
             raise
 
+    # check the theorem based on given knowledge
     def checkTheorem(self, knowledge, theorem):
         self.knowledge = knowledge
         self.theorem = theorem
         if self.generateP9Input():
-            # try:
-            #     outputStr = subprocess.check_output([self.binaryPath, "-f", "./p9_input.txt"])
-            #     if outputStr.find("THEOREM PROVED") != -1:
-            #         return True
-            #     else:
-            #         return False
-            # except subprocess.CalledProcessError:
-            #     return False
             command = self.binaryPath + " -f ./p9_input.txt"
             args = shlex.split(command)
             prc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -77,8 +72,6 @@ class TheoremProver(object):
 
 if __name__ == "__main__":
     tp = TheoremProver(4,4)
-    # knowledge = "-Stench(1,1).\n-Breeze(1,1).\n-Stench(2,1).\nBreeze(2,1).\nStench(1,2).\n-Breeze(1,2).\n"
-    # theorem = "-Wumpus(1,2)."
     knowledge = "-Breeze(1,1).\n-Stench(1,1)."
     theorem = "-Pit(1,2)."
     if tp.checkTheorem(knowledge, theorem):

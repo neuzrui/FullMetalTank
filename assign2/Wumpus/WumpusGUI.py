@@ -1,7 +1,6 @@
-import time
-
 __author__ = 'Rui Zhang'
 
+import time
 from WumpusWorld import *
 from Tkinter import *
 import tkFileDialog, tkFont
@@ -16,7 +15,8 @@ class WumpusGUI(Tk):
     canvas_width = 500
     cell_size = 0
 
-    def __init__(self):
+    def __init__(self, binPath, mapPath):
+        self.binPath = binPath
 
         Tk.__init__(self)
         self.title("Wumpus 1.0 by Rui Zhang")
@@ -47,7 +47,7 @@ class WumpusGUI(Tk):
         self.colEntry = Entry(createWorldFrame, width=5)
         self.rowEntry.grid(row=0, column=1, sticky=W+E)
         self.colEntry.grid(row=1, column=1, sticky=W+E)
-        Button(createWorldFrame, text="Load", command=self.loadWorldFile).grid(row=2, column=0)
+        Button(createWorldFrame, text="Load", command=self.loadHandler).grid(row=2, column=0)
         Button(createWorldFrame, text="Generate", command=self.generateWorld).grid(row=2, column=1)
 
         # actionFrame details
@@ -56,14 +56,10 @@ class WumpusGUI(Tk):
         self.moveHistory.grid(row=1, column=0, padx=1, pady=1)
         Button(actionFrame, text="Quit", command=self.quit).grid(row=2, column=0, sticky=E+W)
 
+        self.loadWorldFile(mapPath)
 
-    def loadWorldFile(self):
-        # define options for opening or saving a file
-        fileOptions = {'defaultextension': '.txt',
-                       'initialdir': ".",
-                       'filetypes': [('text files', '.txt')],
-                       'title': 'Open World Configuration File'}
-        fileName = tkFileDialog.askopenfilename(**fileOptions)
+    # load world map from given file name path
+    def loadWorldFile(self, fileName):
         try:
             if fileName:
                 self.wumpusWorld = WumpusWorld(fileName)
@@ -74,13 +70,24 @@ class WumpusGUI(Tk):
                     self.renderWorld()
                     # pass the functions updateCellLabel and updateUI to agent,
                     #  in order to let the agent control UI
-                    self.agent = Agent(self.wumpusWorld, self.moveHistory, self.updateCellLabel, self.updateUI)
+                    self.agent = Agent(self.wumpusWorld, self.moveHistory, self.updateCellLabel,
+                                       self.updateUI, self.binPath)
+                    self.moveHistory.delete(0, END)
                 else:
                     print "Error"
-
         except ConfigurationError as e:
             message = str(e.value)
             self.showErrorMsg(message)
+
+    # handler for "load" button
+    def loadHandler(self):
+        # define options for opening or saving a file
+        fileOptions = {'defaultextension': '.txt',
+                       'initialdir': ".",
+                       'filetypes': [('text files', '.txt')],
+                       'title': 'Open World Configuration File'}
+        fileName = tkFileDialog.askopenfilename(**fileOptions)
+        self.loadWorldFile(fileName)
 
     # let the agent explore the wumpus world automatically
     def play(self):
@@ -88,6 +95,7 @@ class WumpusGUI(Tk):
             self.showErrorMsg("Please create a world first!")
             return
         self.agent.play()
+        self.moveHistory.insert(END, "steps %s" % self.agent.steps)
         self.moveHistory.insert(END, "score %s" % self.agent.score)
         self.moveHistory.see(END)
 
@@ -97,9 +105,9 @@ class WumpusGUI(Tk):
         self.cellLabels[target[0]][target[1]].set(self.wumpusWorld.world[target[0]][target[1]])
 
     # update UI to show the most recent state of the world
-    def updateUI(self):
+    def updateUI(self, interval=0.5):
         # set a 0.5s delay in order to let user see the moving process
-        time.sleep(0.5)
+        time.sleep(interval)
         self.update()
 
     # render the world on canvas
@@ -161,6 +169,9 @@ class WumpusGUI(Tk):
         quit()
 
 if __name__=='__main__':
-    wumpus = WumpusGUI()
-    wumpus.mainloop()
+    if len(sys.argv) != 3:
+        print "Usage: python WumpusGUI.py [PROVER9_BINARY_PATH] [MAP_FILE]"
+    else:
+        wumpus = WumpusGUI(sys.argv[1], sys.argv[2])
+        wumpus.mainloop()
 

@@ -1,25 +1,193 @@
 assign(max_seconds, 1).
 formulas(sos).
--Breeze(1,2).
-Stench(1,2).
-Breeze(2,3).
-Stench(2,3).
--Breeze(1,1).
--Stench(1,1).
-Breeze(3,2).
--Stench(3,2).
--Breeze(1,3).
--Stench(1,3).
--Breeze(2,4).
--Stench(2,4).
-Breeze(3,4).
--Stench(3,4).
-Breeze(2,1).
--Stench(2,1).
--Breeze(1,4).
-Stench(1,4).
+-Breeze(8,4).
+-Stench(8,4).
+-Breeze(7,10).
+-Stench(7,10).
+-Breeze(1,8).
+-Stench(1,8).
+-Breeze(2,7).
+-Stench(2,7).
+-Breeze(4,8).
+-Stench(4,8).
+-Breeze(3,6).
+-Stench(3,6).
+-Breeze(9,6).
+-Stench(9,6).
+-Breeze(6,9).
+-Stench(6,9).
+-Breeze(5,1).
+-Stench(5,1).
+-Breeze(10,1).
+-Stench(10,1).
+-Breeze(7,8).
+-Stench(7,8).
+-Breeze(6,6).
+-Stench(6,6).
+-Breeze(8,7).
+-Stench(8,7).
+-Breeze(1,5).
+-Stench(1,5).
 -Breeze(2,2).
 -Stench(2,2).
+-Breeze(4,3).
+-Stench(4,3).
+-Breeze(3,7).
+-Stench(3,7).
+-Breeze(9,3).
+Stench(9,3).
+Breeze(5,6).
+-Stench(5,6).
+-Breeze(10,4).
+-Stench(10,4).
+-Breeze(8,6).
+-Stench(8,6).
+-Breeze(1,2).
+-Stench(1,2).
+-Breeze(4,2).
+-Stench(4,2).
+-Breeze(10,10).
+-Stench(10,10).
+Breeze(8,9).
+-Stench(8,9).
+-Breeze(3,2).
+-Stench(3,2).
+Breeze(9,10).
+-Stench(9,10).
+-Breeze(10,5).
+-Stench(10,5).
+-Breeze(6,2).
+-Stench(6,2).
+-Breeze(8,3).
+-Stench(8,3).
+-Breeze(2,6).
+-Stench(2,6).
+Breeze(4,7).
+-Stench(4,7).
+Breeze(3,3).
+-Stench(3,3).
+-Breeze(9,7).
+-Stench(9,7).
+-Breeze(5,2).
+-Stench(5,2).
+-Breeze(10,8).
+-Stench(10,8).
+-Breeze(7,5).
+-Stench(7,5).
+-Breeze(6,5).
+-Stench(6,5).
+-Breeze(8,2).
+Stench(8,2).
+-Breeze(1,6).
+-Stench(1,6).
+-Breeze(2,1).
+-Stench(2,1).
+-Breeze(1,9).
+-Stench(1,9).
+-Breeze(4,6).
+-Stench(4,6).
+-Breeze(3,8).
+-Stench(3,8).
+-Breeze(9,4).
+-Stench(9,4).
+-Breeze(10,3).
+-Stench(10,3).
+Breeze(7,2).
+-Stench(7,2).
+-Breeze(6,8).
+-Stench(6,8).
+-Breeze(8,5).
+-Stench(8,5).
+-Breeze(1,3).
+-Stench(1,3).
+Breeze(2,4).
+-Stench(2,4).
+-Breeze(5,9).
+-Stench(5,9).
+-Breeze(4,1).
+-Stench(4,1).
+-Breeze(3,9).
+-Stench(3,9).
+Breeze(10,9).
+-Stench(10,9).
+-Breeze(7,3).
+-Stench(7,3).
+Breeze(6,1).
+-Stench(6,1).
+-Breeze(2,5).
+-Stench(2,5).
+-Breeze(4,10).
+-Stench(4,10).
+-Breeze(2,10).
+-Stench(2,10).
+Breeze(9,8).
+-Stench(9,8).
+-Breeze(5,3).
+-Stench(5,3).
+-Breeze(10,7).
+-Stench(10,7).
+-Breeze(7,6).
+-Stench(7,6).
+-Breeze(6,4).
+-Stench(6,4).
+Breeze(8,1).
+-Stench(8,1).
+-Breeze(7,9).
+-Stench(7,9).
+-Breeze(1,7).
+-Stench(1,7).
+-Breeze(2,8).
+-Stench(2,8).
+-Breeze(1,10).
+-Stench(1,10).
+-Breeze(4,5).
+-Stench(4,5).
+Breeze(3,5).
+-Stench(3,5).
+-Breeze(9,5).
+-Stench(9,5).
+-Breeze(6,10).
+-Stench(6,10).
+Breeze(5,8).
+-Stench(5,8).
+-Breeze(10,2).
+Stench(10,2).
+-Breeze(7,7).
+-Stench(7,7).
+Breeze(6,7).
+-Stench(6,7).
+-Breeze(8,8).
+-Stench(8,8).
+-Breeze(1,4).
+-Stench(1,4).
+-Breeze(2,3).
+-Stench(2,3).
+-Breeze(5,10).
+-Stench(5,10).
+Breeze(4,4).
+-Stench(4,4).
+-Breeze(3,10).
+-Stench(3,10).
+-Breeze(5,5).
+-Stench(5,5).
+-Breeze(7,4).
+-Stench(7,4).
+-Breeze(1,1).
+-Stench(1,1).
+-Breeze(8,10).
+-Stench(8,10).
+-Breeze(4,9).
+-Stench(4,9).
+-Breeze(3,1).
+-Stench(3,1).
+-Breeze(2,9).
+-Stench(2,9).
+-Breeze(5,4).
+-Stench(5,4).
+-Breeze(10,6).
+-Stench(10,6).
+-Breeze(6,3).
+-Stench(6,3).
 
 all X1 all Y1 all X2 all Y2 (Adjacent(X1,Y1,X2,Y2) <-> (((X1=X2) & NearbyY(Y1,Y2)) | ((Y1=Y2) & NearbyX(X1,X2)))).
 all X1 all Y1 all X2 all Y2 ((-Stench(X1,Y1) & Adjacent(X1, Y1, X2, Y2))-> -Wumpus(X2, Y2)).
@@ -29,15 +197,27 @@ all X1 all Y1 (Stench(X1,Y1) -> (exists X2 exists Y2 (Wumpus(X2,Y2) & Adjacent(X
 all X (NearbyX(1,X) <-> X=2).
 all X (NearbyX(2,X) <-> X=1 | X=3).
 all X (NearbyX(3,X) <-> X=2 | X=4).
-all X (NearbyX(4,X) <-> X=3).
+all X (NearbyX(4,X) <-> X=3 | X=5).
+all X (NearbyX(5,X) <-> X=4 | X=6).
+all X (NearbyX(6,X) <-> X=5 | X=7).
+all X (NearbyX(7,X) <-> X=6 | X=8).
+all X (NearbyX(8,X) <-> X=7 | X=9).
+all X (NearbyX(9,X) <-> X=8 | X=10).
+all X (NearbyX(10,X) <-> X=9).
 all Y (NearbyY(1,Y) <-> Y=2).
 all Y (NearbyY(2,Y) <-> Y=1 | Y=3).
 all Y (NearbyY(3,Y) <-> Y=2 | Y=4).
-all Y (NearbyY(4,Y) <-> Y=3).
+all Y (NearbyY(4,Y) <-> Y=3 | Y=5).
+all Y (NearbyY(5,Y) <-> Y=4 | Y=6).
+all Y (NearbyY(6,Y) <-> Y=5 | Y=7).
+all Y (NearbyY(7,Y) <-> Y=6 | Y=8).
+all Y (NearbyY(8,Y) <-> Y=7 | Y=9).
+all Y (NearbyY(9,Y) <-> Y=8 | Y=10).
+all Y (NearbyY(10,Y) <-> Y=9).
 
 end_of_list.
 
 formulas(goals).
-Pit(4,4).
+-Pit(9,1).
 
 end_of_list.
